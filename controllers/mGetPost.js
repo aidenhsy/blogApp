@@ -1,6 +1,6 @@
 const Post = require("../models/Post");
 
 module.exports = async (req, res) => {
-  let posts = await Post.find({});
-  res.render("index", { posts });
+  let post = await Post.findById(req.params.id);
+  res.render("post", { post });
 };

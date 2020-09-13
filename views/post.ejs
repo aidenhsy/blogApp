@@ -9,20 +9,18 @@
     <%-include("layouts/navbar");-%>
 
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('img/post-bg.jpg')">
+    <header class="masthead" style="background-image: url('<%=post.image%>')">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="post-heading">
-              <h1>Man must explore, and this is exploration at its greatest</h1>
-              <h2 class="subheading">
-                Problems look mighty small from 150 miles up
-              </h2>
+              <h1><%=post.title%></h1>
+              <h2 class="subheading"><%=post.body%></h2>
               <span class="meta"
                 >Posted by
-                <a href="#">Start Bootstrap</a>
-                on August 24, 2019</span
+                <a href="#"><%=post.username%></a>
+                on <%=post.datePosted.toDateString()%></span
               >
             </div>
           </div>
@@ -35,19 +33,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
-            <p>
-              Science cuts two ways, of course; its products can be used for
-              both good and evil. But there's no turning back from science. The
-              early warnings about technological dangers also come from science.
-            </p>
-
-            <p>
-              Placeholder text by
-              <a href="http://spaceipsum.com/">Space Ipsum</a>. Photographs by
-              <a href="https://www.flickr.com/photos/nasacommons/"
-                >NASA on The Commons</a
-              >.
-            </p>
+            <p><%=post.body%></p>
           </div>
         </div>
       </div>
