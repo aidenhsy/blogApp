@@ -22,7 +22,7 @@ if (port == null || port == "") {
   port = 4000;
 }
 app.listen(port, () => {
-  console.log("Apffp listening");
+  console.log("App listening...");
 });
 
 //middlewares
