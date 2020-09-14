@@ -17,9 +17,13 @@ const mLogout = require("./controllers/mLogout");
 const mdValidate = require("./middlewares/mdValidate");
 
 //route
-let PORT = process.env.PORT || 5000;
-app.listen(PORT, console.log(`Listening on port ${PORT}`));
-global.loggedIn = null;
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 4000;
+}
+app.listen(port, () => {
+  console.log("App listening");
+});
 
 //middlewares
 app.set("view engine", "ejs");
