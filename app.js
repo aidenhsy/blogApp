@@ -6,11 +6,11 @@ const fileUpload = require("express-fileupload");
 const mongoose = require("mongoose");
 const expressSession = require("express-session");
 
-//custom modules
-const mStorePost = require("./controllers/mStorePost");
-const mStoreUser = require("./controllers/mStoreUser");
-const mGetPost = require("./controllers/mGetPost");
-const mLoginUser = require("./controllers/mLoginUser");
+//database controllers
+const database = require("./controllers/database");
+//page controllers
+const pages = require("./controllers/pages");
+//custom modules //first party modules //these are just controllers //process controller
 const mLogout = require("./controllers/mLogout");
 
 //custom middlewares
@@ -49,23 +49,17 @@ mongoose.connect(
   }
 );
 
-//page controllers
-const pcHome = require("./controllers/pcHome");
-const pcCreatePost = require("./controllers/pcCreatePost");
-const pcCreateUser = require("./controllers/pcCreateUser");
-const pcLogin = require("./controllers/pcLogin");
-
 //posts
-app.post("/posts/store", mStorePost);
-app.post("/users/store", mStoreUser);
-app.post("/users/login", mLoginUser);
+app.post("/posts/store", database.storePost);
+app.post("/users/store", database.storeUser);
+app.post("/users/login", database.loginUser);
 
 //gets
-app.get("/", pcHome);
-app.get("/posts/create", pcCreatePost);
-app.get("/auth/login", pcLogin);
-app.get("/auth/create", pcCreateUser);
-app.get("/post/:id", mGetPost);
+app.get("/", pages.home);
+app.get("/posts/create", pages.createPost);
+app.get("/auth/login", pages.login);
+app.get("/auth/create", pages.createUser);
+app.get("/post/:id", database.getPost);
 app.get("/auth/logout", mLogout);
 app.use((req, res) => {
   res.render("404");
